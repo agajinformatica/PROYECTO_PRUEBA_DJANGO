@@ -1,11 +1,17 @@
+<<<<<<< HEAD
 # PROYECTO_PRUEBA_DJANGO
 TAREA PARA ENTREVISTA PYTHON
 
+=======
+>>>>>>> 4ac6493 (Primer commit del proyecto CRM con Django)
 # CRM de Clientes – Proyecto Técnico con Django
 
 **Autor:** Arnold Jonatan Alvarado Giron  
 **Email:** aj.alvarado.giron@gmail.com  
+<<<<<<< HEAD
 **Celular:** 993390916
+=======
+>>>>>>> 4ac6493 (Primer commit del proyecto CRM con Django)
 **Ubicación:** Perú  
 **Tecnologías:** Python, Django, SQLite, Faker  
 **Rol:** Desarrollador Full Stack en formación
@@ -119,4 +125,8 @@ http://127.0.0.1:8000
 Estoy construyendo mi perfil como desarrollador full stack, con experiencia en backend Python/Django y aprendiendo tecnologías como React, TypeScript y bases de datos avanzadas.
 
 Este reto fue una gran oportunidad para demostrar cómo abordo soluciones técnicas de manera ordenada, modular y escalable.
+<<<<<<< HEAD
 💻 Perfil profesional en constante crecimiento
+=======
+💻 Perfil profesional en constante crecimiento
+>>>>>>> 4ac6493 (Primer commit del proyecto CRM con Django)

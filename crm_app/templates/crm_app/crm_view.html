@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>CRM de Clientes</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f7fa;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        input[type="text"] {
+            padding: 8px;
+            width: 250px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        label {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+        }
+
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        th, td {
+            padding: 12px 16px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        th {
+            background-color: #f0f0f0;
+            color: #333;
+        }
+
+        th a {
+            text-decoration: none;
+            color: #2c3e50;
+        }
+
+        tr:hover {
+            background-color: #f9f9f9;
+        }
+
+        .footer {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 12px;
+            color: #aaa;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>CRM de Clientes</h1>
+
+    <form method="get">
+        <input type="text" name="search" placeholder="Buscar por nombre..." value="{{ request.GET.search }}">
+        <label>
+            <input type="checkbox" name="birthday" value="week" {% if request.GET.birthday == 'week' %}checked{% endif %}>
+            Cumpleaños esta semana
+        </label>
+        <button type="submit">Filtrar</button>
+    </form>
+
+    <table>
+        <thead>
+            <tr>
+                <th><a href="?sort=name">Nombre</a></th>
+                <th><a href="?sort=company">Compañía</a></th>
+                <th><a href="?sort=birthday">Cumpleaños</a></th>
+                <th><a href="?sort=interaction">Última Interacción</a></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for customer in customers %}
+            <tr>
+                <td>{{ customer.full_name }}</td>
+                <td>{{ customer.company.name }}</td>
+                <td>{{ customer.birth_date|date:"F j" }}</td>
+                <td>
+                    {% if customer.last_interaction_date %}
+                        {{ customer.last_interaction_date|timesince:now }} ago ({{ customer.last_interaction_type }})
+                    {% else %}
+                        Sin interacción
+                    {% endif %}
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="4">No se encontraron resultados.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="footer">
+        Proyecto CRM • Arnold Jonatan © 2025
+    </div>
+
+</body>
+</html>
